@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+    <style>
+        html, body {
+            min-height: 100%;
+            margin: 0;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #ff1493; /* Darker pink */
+            background-image: url("static/img/Blue.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        h1 {
+            margin: 0 0 20px;
+            font-weight: 400;
+            color: #ff1493; /* Darker pink */
+            text-align: center;
+        }
+        label {
+            margin: 0 0 10px;
+            font-weight: 500;
+            color: #ff1493; /* Darker pink */
+            font-size: 12px;
+        }
+        .main-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        form {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .info {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff1493; /* Darker pink */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c71585; /* Even darker pink */
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            color: #ff1493; /* Darker pink */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-block">
+        <form action="{{ url_for('predict') }}" method="post">
+            <h1><b>Breast Cancer Prediction</b></h1>
+            <div class="info">
+                <label for="area_worst">Area Worst</label>
+                <input type="text" id="area_worst" name="area_worst" required>
+            </div>
+            <div class="info">
+                <label for="concave_points_worst">Concave Points Worst</label>
+                <input type="text" id="concave_points_worst" name="concave_points_worst" required>
+            </div>
+            <div class="info">
+                <label for="concave_points_mean">Concave Points Mean</label>
+                <input type="text" id="concave_points_mean" name="concave_points_mean" required>
+            </div>
+            <div class="info">
+                <label for="radius_worst">Radius Worst</label>
+                <input type="text" id="radius_worst" name="radius_worst" required>
+            </div>
+            <div class="info">
+                <label for="perimeter_worst">Perimeter Worst</label>
+                <input type="text" id="perimeter_worst" name="perimeter_worst" required>
+            </div>
+            <button type="submit">Predict</button>
+            <div class="result">
+                <h2>Result</h2>
+                <p>{{ result }}</p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
